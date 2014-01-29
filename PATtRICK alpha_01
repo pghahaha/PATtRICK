@@ -1,0 +1,111 @@
+
+import java.io.*;
+import java.util.*;
+
+import javax.swing.*;
+public class Main {
+
+	public static void main(String[] args) {
+		
+		String startDialog = "null";
+		
+		String shallWe = input(randHello());
+		
+		
+		
+		
+		if (shallWe.contains("no")){
+			
+			JOptionPane.showMessageDialog(null, bye());
+			
+		}else if (shallWe.contains("yes" )|| shallWe.contains("yea") || shallWe.contains("sure")){
+						
+			
+			while (!startDialog.contains("bye")){
+			
+			startDialog = JOptionPane.showInputDialog(null, "Cool! So, what's on you mind?" );
+			
+			if (startDialog == null){
+				System.exit(0);
+			}else{
+			
+			if (startDialog.contains("created") && startDialog.contains("you") && startDialog.contains("who")){
+				
+				JOptionPane.showMessageDialog(null, "Patrick Joseph Gallagher created me. Matter of fact, he is still creating me as we speak!");
+				
+				}
+			else if (startDialog.contains("bye")){
+				
+				//JOptionPane.showMessageDialog(null, "Bye then!", "Bye!", JOptionPane.INFORMATION_MESSAGE);
+			
+			}else{
+					JOptionPane.showMessageDialog(null, "Sorry, but \"" + startDialog +  "\" isn't recognized as a valid input", "Unrecognized input", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+			JOptionPane.showMessageDialog(null, "Well, looks like goodbye! Seeya soon!");
+			System.exit(0);
+			
+		}
+		}
+		else{
+		
+			JOptionPane.showMessageDialog(null, "Sorry, your response was not recognized by the AI. \nPlease submit your response to the developer and he'll work on fixing that up ASAP! \nThanks for helping to make P.A.T.t.R.I.C.K. even better!", "Error", JOptionPane.ERROR_MESSAGE);
+			
+		
+		}
+		
+	}
+	
+	private static String input(String prompt){
+		
+		BufferedReader stdin = new BufferedReader(
+				new InputStreamReader(System.in));
+		
+		System.out.print(prompt);
+		System.out.flush();
+		
+		try {
+			return stdin.readLine();
+		} catch (Exception e) {
+			return "Error: " + e.getMessage();
+		}
+		
+	}
+	public static String randHello(){
+		Random helloGenerator = new Random();
+		
+		String helloBoot = null;
+		
+		int randHelloI = helloGenerator.nextInt(2);
+		
+		switch (randHelloI){
+		
+		case 0 :
+			helloBoot = "Hi! I'm P.A.T.t.R.I.C.K.! Wanna chat?";
+			break;
+		case 1 :
+			helloBoot = "P.A.T.t.R.I.C.K. here! Shall we talk?";
+		}
+		
+		return helloBoot ;
+	}
+	public static String bye(){
+		Random byeGenerator = new Random();
+		
+		String byeForce = null;
+		
+		int randByeI = byeGenerator.nextInt(2);
+		
+		switch (randByeI){
+		
+		case 0 :
+			byeForce = "Shame. Well, I hope we'll talk soon!";
+			break;
+		case 1 :
+			byeForce = "Aww, ok. Seeya later.";
+		}
+		
+		return byeForce;
+	}
+
+}
